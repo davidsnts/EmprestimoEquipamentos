@@ -6,7 +6,9 @@ namespace GestorEquipamentos.DataBase
 {
     public class AppDbContext : IdentityDbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }       
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+        public DbSet<ProdutoModel> Produto { get; set; } = default!;
 
     }
 }
