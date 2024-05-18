@@ -1,4 +1,5 @@
 using GestorEquipamentos.DataBase;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,9 @@ var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 //serviço para registrar o contexto
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
+
+//adicionar identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 var app = builder.Build();
 
