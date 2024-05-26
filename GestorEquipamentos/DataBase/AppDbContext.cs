@@ -9,6 +9,7 @@ namespace GestorEquipamentos.DataBase
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<ProdutoModel> Produto { get; set; } = default!;
+        public DbSet<GestorEquipamentos.Models.ReservaModel> ReservaModel { get; set; } = default!;
 
     }
 }
