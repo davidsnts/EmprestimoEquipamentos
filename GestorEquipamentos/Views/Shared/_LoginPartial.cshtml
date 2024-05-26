@@ -1,15 +1,19 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> _userManager;
+<!DOCTYPE html>
 
 
-@if (SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User) && await _userManager.GetUserAsync(User) != null)
 {
+    var user = await _userManager.GetUserAsync(User);
+
     <ul class="d-flex m-0 p-0">
         <form method="post" asp-controller="account" asp-action="logout">
 
             <div class="dropdown">
                 <button class="btn  dropdown-toggle text-light fw-bold" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    @User.Identity.Name
+                    @user.Nome
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li><a class="dropdown-item" href="/Account/Settings?id=@(SignInManager.UserManager.GetUserId(User))">Settings</a></li>                 
@@ -25,6 +29,8 @@
 }
 else
 {
+    await SignInManager.SignOutAsync()
+    ;
     <ul class="d-flex m-0 p-0">
         <a class="nav-link text-light fw-bold" asp-controller="account" asp-action="register">Register</a>
     </ul>

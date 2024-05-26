@@ -16,8 +16,8 @@ namespace GestorEquipamentos.Controllers
     public class ReservaController : Controller
     {
         private readonly AppDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;        
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;        
 
         public ReservaController(AppDbContext context)
         {

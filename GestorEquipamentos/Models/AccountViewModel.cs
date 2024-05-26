@@ -15,6 +15,6 @@ namespace GestorEquipamentos.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirme a senha")]
         [Compare("Password", ErrorMessage = "As senhas não são iguais")]
-        public string? ConfirmPassword { get; set; }
+        public string? ConfirmPassword { get; set; }        
     }
 }

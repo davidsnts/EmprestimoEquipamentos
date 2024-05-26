@@ -20,5 +20,8 @@ namespace GestorEquipamentos.Models
         [Display(Name = "Confirme a senha")]
         [Compare("Password", ErrorMessage = "As senhas não são iguais")]
         public string? ConfirmPassword { get; set; }
+        
+        [Required]
+        public string Telefone { get; set; }
     }
 }
